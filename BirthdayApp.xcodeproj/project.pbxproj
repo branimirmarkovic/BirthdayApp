@@ -14,6 +14,12 @@
 		22576CD227A97B760007B8BB /* BirthdayAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22576CD127A97B760007B8BB /* BirthdayAppTests.swift */; };
 		22576CDC27A97B760007B8BB /* BirthdayAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22576CDB27A97B760007B8BB /* BirthdayAppUITests.swift */; };
 		22576CDE27A97B760007B8BB /* BirthdayAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22576CDD27A97B760007B8BB /* BirthdayAppUITestsLaunchTests.swift */; };
+		22576CEC27A97C230007B8BB /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22576CEB27A97C230007B8BB /* Event.swift */; };
+		22576CEF27A97D3C0007B8BB /* LocalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22576CEE27A97D3C0007B8BB /* LocalStore.swift */; };
+		22576CF127AD39AB0007B8BB /* CompositionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22576CF027AD39AB0007B8BB /* CompositionRoot.swift */; };
+		22576CF327AD3B290007B8BB /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22576CF227AD3B290007B8BB /* LocalFileManager.swift */; };
+		22576CF627AD4E100007B8BB /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22576CF527AD4E100007B8BB /* EventsViewModel.swift */; };
+		22576CF827AD68830007B8BB /* DefaultFileManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22576CF727AD68830007B8BB /* DefaultFileManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +50,12 @@
 		22576CD727A97B760007B8BB /* BirthdayAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BirthdayAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22576CDB27A97B760007B8BB /* BirthdayAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayAppUITests.swift; sourceTree = "<group>"; };
 		22576CDD27A97B760007B8BB /* BirthdayAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		22576CEB27A97C230007B8BB /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		22576CEE27A97D3C0007B8BB /* LocalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStore.swift; sourceTree = "<group>"; };
+		22576CF027AD39AB0007B8BB /* CompositionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionRoot.swift; sourceTree = "<group>"; };
+		22576CF227AD3B290007B8BB /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
+		22576CF527AD4E100007B8BB /* EventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
+		22576CF727AD68830007B8BB /* DefaultFileManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFileManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +106,11 @@
 		22576CBF27A97B740007B8BB /* BirthdayApp */ = {
 			isa = PBXGroup;
 			children = (
+				22576CF427AD4E020007B8BB /* ViewModel */,
+				22576CED27A97D000007B8BB /* Services */,
+				22576CEA27A97C1B0007B8BB /* Model */,
 				22576CC027A97B740007B8BB /* BirthdayAppApp.swift */,
+				22576CF027AD39AB0007B8BB /* CompositionRoot.swift */,
 				22576CC227A97B740007B8BB /* ContentView.swift */,
 				22576CC427A97B760007B8BB /* Assets.xcassets */,
 				22576CC627A97B760007B8BB /* Preview Content */,
@@ -114,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				22576CD127A97B760007B8BB /* BirthdayAppTests.swift */,
+				22576CF727AD68830007B8BB /* DefaultFileManagerTests.swift */,
 			);
 			path = BirthdayAppTests;
 			sourceTree = "<group>";
@@ -125,6 +142,31 @@
 				22576CDD27A97B760007B8BB /* BirthdayAppUITestsLaunchTests.swift */,
 			);
 			path = BirthdayAppUITests;
+			sourceTree = "<group>";
+		};
+		22576CEA27A97C1B0007B8BB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				22576CEB27A97C230007B8BB /* Event.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		22576CED27A97D000007B8BB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				22576CEE27A97D3C0007B8BB /* LocalStore.swift */,
+				22576CF227AD3B290007B8BB /* LocalFileManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		22576CF427AD4E020007B8BB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				22576CF527AD4E100007B8BB /* EventsViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +300,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				22576CC327A97B740007B8BB /* ContentView.swift in Sources */,
+				22576CEC27A97C230007B8BB /* Event.swift in Sources */,
+				22576CF127AD39AB0007B8BB /* CompositionRoot.swift in Sources */,
 				22576CC127A97B740007B8BB /* BirthdayAppApp.swift in Sources */,
+				22576CF627AD4E100007B8BB /* EventsViewModel.swift in Sources */,
+				22576CEF27A97D3C0007B8BB /* LocalStore.swift in Sources */,
+				22576CF327AD3B290007B8BB /* LocalFileManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22576CD227A97B760007B8BB /* BirthdayAppTests.swift in Sources */,
+				22576CF827AD68830007B8BB /* DefaultFileManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
