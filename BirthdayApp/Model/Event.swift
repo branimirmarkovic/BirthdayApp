@@ -10,7 +10,7 @@ import Foundation
 enum EventType: String, Codable, Equatable {
     case birthday = "Birthday"
 }
-struct Event: Codable, Equatable {
+struct Event: Codable, Equatable{
     var id: UUID
     var type: EventType
     var person: Person

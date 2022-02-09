@@ -95,24 +95,10 @@ class DefaultFileManager {
 extension DefaultFileManager: LocalFileManager {
     
     public func read() -> AnyPublisher<Data, Error> {
-        Future  { promise in
-            do {
-                let data = try Data(contentsOf: self.url)
-                return promise(.success(data))
-            } catch {
-                return promise(.failure(error))
-            }
-        }.eraseToAnyPublisher()
+        Future  { $0(self.read()) }.eraseToAnyPublisher()
     }
     
     public func write(_ data: Data) -> AnyPublisher<Void, Error> {
-        Future { promise in 
-            do {
-                try data.write(to: self.url)
-                return  promise(.success(()))
-            } catch {
-                return promise(.failure(error))
-            }
-        }.eraseToAnyPublisher()
+        Future { $0(self.write(data)) }.eraseToAnyPublisher()
     }
 }

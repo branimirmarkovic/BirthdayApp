@@ -8,27 +8,17 @@
 import Foundation
 import Combine
 
-protocol EventLoader {
+protocol Store {
     func load() -> AnyPublisher<[Event], Error>
     func insert(event: Event) -> AnyPublisher<Void, Error>
     func update(event: Event) -> AnyPublisher<Void, Error>
     func delete(event: Event) -> AnyPublisher<Void, Error>
 }
 
-
-class LocalStore {
-    
-    var fileManager: LocalFileManager
-    
-    init(fileManager: LocalFileManager) {
-        self.fileManager = fileManager
-    }
-}
-
-extension LocalStore: EventLoader {
+extension DefaultFileManager: Store {
     
     func load<Object: Decodable>() -> AnyPublisher<[Object], Error> {
-        fileManager.read()
+        read()
             .decode(type: [Object].self, decoder: JSONDecoder())
             .eraseToAnyPublisher()
     }
@@ -37,7 +27,7 @@ extension LocalStore: EventLoader {
         load()
             .append([event])    
             .encode(encoder: JSONEncoder())
-            .flatMap(fileManager.write)
+            .flatMap(self.write)
             .eraseToAnyPublisher()
     }
     
@@ -47,7 +37,7 @@ extension LocalStore: EventLoader {
             .map { $0 == event ? event : $0}
             .collect()
             .encode(encoder: JSONEncoder())
-            .flatMap(fileManager.write)
+            .flatMap(self.write)
             .eraseToAnyPublisher()
     }
     
@@ -57,7 +47,7 @@ extension LocalStore: EventLoader {
             .filter { $0 != event } 
             .collect()
             .encode(encoder: JSONEncoder())
-            .flatMap(fileManager.write)
+            .flatMap(self.write)
             .eraseToAnyPublisher()
     }
 }
